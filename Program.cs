@@ -18,14 +18,14 @@ void ZADACHA_47()
         return number;
     }
 
-    void GetArray(double[,] matrix)
+    void GetArray(double[,] matrix,double min,double max)
     {
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
             for (int j = 0; j < matrix.GetLength(1); j++)
             {
-                matrix[i, j] = Convert.ToDouble(new Random().Next(-1000, 1000)) / 10;
-            }
+                matrix[i, j] = Math.Round(new Random().NextDouble()*(max-min)+min,1);
+            } 
         }
     }
 
@@ -45,10 +45,13 @@ void ZADACHA_47()
 
     int m = ReadData("Введите количество строк m: ");
     int n = ReadData("Введите количество столбцов n: ");
+    double min= ReadData("Введите min: ");
+    double max=ReadData("Введите max: ");
     double[,] matrix = new double[m, n];
     Console.WriteLine();
-    GetArray(matrix);
+    GetArray(matrix,min,max);
     PrintArray(matrix);
+    System.Console.WriteLine( );
 }
 
 void ZADACHA_50()
